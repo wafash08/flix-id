@@ -26,17 +26,15 @@ class Login implements UseCase<Result<User>, LoginParams> {
 
     if (idResult.isSuccess) {
       final Result<User> userResult = await userRepository.getUser(
-        uid: idResult.resultValue!,
+        uid: idResult.value!,
       );
 
       return switch (userResult) {
-        Ok(value: final user) => Result.ok(user),
-        Failure(error: final err) => Result.error(
-          err ?? Exception("getUser failed"),
-        ),
+        Success(val: final user) => Result.ok(user),
+        Failure(:final err) => Result.error(err),
       };
     } else {
-      return Result.error(idResult.error ?? Exception("login failed"));
+      return Result.error(idResult.error ?? "login failed");
     }
   }
 }

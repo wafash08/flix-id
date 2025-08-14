@@ -1,5 +1,6 @@
 import "package:firebase_core/firebase_core.dart";
 import "package:flix_id/firebase_options.dart";
+import "package:flix_id/presentation/pages/login_page.dart";
 import "package:flix_id/presentation/providers/logger_observer.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
@@ -25,7 +26,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: Center(child: Text("Hello World!"))),
+      home: LoginPage(),
+      // Scaffold(body: Center(child: Text("Hello World!"))),
     );
   }
 }

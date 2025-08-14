@@ -1,66 +1,45 @@
-/// Utility class that simplifies handling errors.
-///
-/// Return a [Result] from a function to indicate success or failure.
-///
-/// A [Result] is either an [Ok] with a value of type [T]
-/// or an [Failure] with an [Exception].
-///
-/// Use [Result.ok] to create a successful result with a value of type [T].
-/// Use [Result.error] to create an error result with an [Exception].
-///
-/// Evaluate the result using a switch statement:
-/// ```dart
-/// switch (result) {
-///   case Ok(): {
-///     print(result.value);
-///   }
-///   case Failure(): {
-///     print(result.error);
-///   }
-/// }
-/// ```
 sealed class Result<T> {
   const Result();
 
   /// Creates a successful [Result], completed with the specified [value].
-  const factory Result.ok(T value) = Ok._;
+  const factory Result.ok(T value) = Success._;
 
   /// Creates an error [Result], completed with the specified [error].
-  const factory Result.error(Exception error) = Failure._;
+  const factory Result.error(String error) = Failure._;
 
-  bool get isSuccess => this is Ok<T>;
+  bool get isSuccess => this is Success<T>;
 
   bool get isError => this is Failure<T>;
 
-  T? get resultValue => switch (this) {
-    Ok(value: final v) => v,
+  T? get value => switch (this) {
+    Success(val: final v) => v,
     _ => null,
   };
 
-  Exception? get error => switch (this) {
-    Failure(error: final e) => e,
+  String? get error => switch (this) {
+    Failure(err: final e) => e,
     _ => null,
   };
 }
 
 /// A successful [Result] with a returned [value].
-final class Ok<T> extends Result<T> {
-  const Ok._(this.value);
+final class Success<T> extends Result<T> {
+  const Success._(this.val);
 
   /// The returned value of this result.
-  final T value;
+  final T val;
 
   @override
-  String toString() => "Result<$T>.ok($value)";
+  String toString() => "Result<$T>.success($val)";
 }
 
 /// An error [Result] with a resulting [error].
 final class Failure<T> extends Result<T> {
-  const Failure._(this.exception);
+  const Failure._(this.err);
 
   /// The resulting error of this result.
-  final Exception exception;
+  final String err;
 
   @override
-  String toString() => "Result<$T>.error($exception)";
+  String toString() => "Result<$T>.error($err)";
 }
