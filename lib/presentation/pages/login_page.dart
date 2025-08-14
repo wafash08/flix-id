@@ -1,8 +1,8 @@
 import "package:flix_id/presentation/pages/main_page.dart";
 import "package:flutter/material.dart";
 
-import "../../data/dummies/dummy_authentication.dart";
-import "../../data/dummies/dummy_user_repository.dart";
+import "../../data/firebase/firebase_authentication.dart";
+import "../../data/firebase/firebase_user_repository.dart";
 import "../../domain/usecases/login.dart";
 
 class LoginPage extends StatelessWidget {
@@ -16,12 +16,12 @@ class LoginPage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () async {
             final Login login = Login(
-              authentication: DummyAuthentication(),
-              userRepository: DummyUserRepository(),
+              authentication: FirebaseAuthentication(),
+              userRepository: FirebaseUserRepository(),
             );
 
             final result = await login(
-              LoginParams(email: "nfjanfja", password: "jfndjan"),
+              LoginParams(email: "jimmy.butler@gmail.com", password: "123456"),
             );
             if (result.isSuccess) {
               if (!context.mounted) return;
