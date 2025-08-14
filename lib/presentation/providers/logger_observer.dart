@@ -1,5 +1,5 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logging/logging.dart';
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:logging/logging.dart";
 
 class LoggerObserver extends ProviderObserver {
   LoggerObserver({required this.logger});
@@ -13,7 +13,7 @@ class LoggerObserver extends ProviderObserver {
     ProviderContainer container,
   ) {
     logger.info(
-      'Provider added: ${provider.name ?? provider.runtimeType}, Value: $value',
+      "Provider added: ${provider.name ?? provider.runtimeType}, Value: $value",
     );
   }
 
@@ -23,7 +23,7 @@ class LoggerObserver extends ProviderObserver {
     ProviderContainer container,
   ) {
     logger.warning(
-      'Provider disposed: ${provider.name ?? provider.runtimeType}',
+      "Provider disposed: ${provider.name ?? provider.runtimeType}",
     );
   }
 
@@ -35,7 +35,7 @@ class LoggerObserver extends ProviderObserver {
     ProviderContainer container,
   ) {
     logger.info(
-      'Provider updated: ${provider.name ?? provider.runtimeType}, Previous Value: $previousValue, New Value: $newValue',
+      "Provider updated: ${provider.name ?? provider.runtimeType}, Previous Value: $previousValue, New Value: $newValue",
     );
   }
 
@@ -47,7 +47,7 @@ class LoggerObserver extends ProviderObserver {
     ProviderContainer container,
   ) {
     logger.severe(
-      'Provider failed: ${provider.name ?? provider.runtimeType}, Error: $error',
+      "Provider failed: ${provider.name ?? provider.runtimeType}, Error: $error",
       stackTrace,
     );
   }

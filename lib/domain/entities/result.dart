@@ -32,15 +32,15 @@ sealed class Result<T> {
 
   bool get isError => this is Failure<T>;
 
-  // T? get resultValue => switch (this) {
-  //   Ok(value: final v) => v,
-  //   _ => null,
-  // };
+  T? get resultValue => switch (this) {
+    Ok(value: final v) => v,
+    _ => null,
+  };
 
-  // Exception? get exception => switch (this) {
-  //   Failure(error: final e) => e,
-  //   _ => null,
-  // };
+  Exception? get error => switch (this) {
+    Failure(error: final e) => e,
+    _ => null,
+  };
 }
 
 /// A successful [Result] with a returned [value].
@@ -51,16 +51,16 @@ final class Ok<T> extends Result<T> {
   final T value;
 
   @override
-  String toString() => 'Result<$T>.ok($value)';
+  String toString() => "Result<$T>.ok($value)";
 }
 
 /// An error [Result] with a resulting [error].
 final class Failure<T> extends Result<T> {
-  const Failure._(this.error);
+  const Failure._(this.exception);
 
   /// The resulting error of this result.
-  final Exception error;
+  final Exception exception;
 
   @override
-  String toString() => 'Result<$T>.error($error)';
+  String toString() => "Result<$T>.error($exception)";
 }

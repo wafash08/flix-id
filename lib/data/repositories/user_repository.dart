@@ -1,7 +1,7 @@
-import 'dart:io';
+import "dart:io";
 
-import '../../domain/entities/result.dart';
-import '../../domain/entities/user.dart';
+import "../../domain/entities/result.dart";
+import "../../domain/entities/user.dart";
 
 abstract interface class UserRepository {
   Future<Result<User>> createUser({

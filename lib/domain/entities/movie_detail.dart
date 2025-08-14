@@ -1,6 +1,6 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-part 'movie_detail.freezed.dart';
+part "movie_detail.freezed.dart";
 
 @freezed
 abstract class MovieDetail with _$MovieDetail {
@@ -17,14 +17,14 @@ abstract class MovieDetail with _$MovieDetail {
 
   factory MovieDetail.fromJSON(Map<String, dynamic> json) {
     return MovieDetail(
-      id: json['id'],
-      title: json['title'],
-      overview: json['overview'],
-      runtime: json['runtime'],
-      voteAverage: json['vote_average'].toDouble(),
-      genres: List<String>.from(json['genres'].map((e) => e['name'])),
-      backdropPath: json['backdrop_path'],
-      posterPath: json['poster_path'],
+      id: json["id"],
+      title: json["title"],
+      overview: json["overview"],
+      runtime: json["runtime"],
+      voteAverage: json["vote_average"].toDouble(),
+      genres: List<String>.from(json["genres"].map((e) => e["name"])),
+      backdropPath: json["backdrop_path"],
+      posterPath: json["poster_path"],
     );
   }
 }

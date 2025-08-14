@@ -1,6 +1,6 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import "package:freezed_annotation/freezed_annotation.dart";
 
-part 'actor.freezed.dart';
+part "actor.freezed.dart";
 
 @freezed
 abstract class Actor with _$Actor {

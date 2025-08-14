@@ -1,4 +1,4 @@
-import '../../domain/entities/result.dart';
+import "../../domain/entities/result.dart";
 
 abstract interface class Authentication {
   Future<Result<String>> register({
