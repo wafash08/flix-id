@@ -18,7 +18,7 @@ class Login implements UseCase<Result<User>, LoginParams> {
   final UserRepository userRepository;
 
   @override
-  Future<Result<User>> call(LoginParams params) async {
+  Future<Result<User>> execute(LoginParams params) async {
     final Result<String> idResult = await authentication.login(
       email: params.email,
       password: params.password,

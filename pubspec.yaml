@@ -19,6 +19,7 @@ dependencies:
   cloud_firestore: ^5.6.12
   path: ^1.9.1
   firebase_storage: ^12.4.10
+  dio: ^5.9.0
 
 dev_dependencies:
   flutter_test:

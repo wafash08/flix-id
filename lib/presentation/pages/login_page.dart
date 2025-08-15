@@ -17,7 +17,7 @@ class LoginPage extends ConsumerWidget {
           onPressed: () async {
             final Login login = ref.watch(loginProvider);
 
-            final result = await login(
+            final result = await login.execute(
               LoginParams(email: "jimmy.butler@gmail.com", password: "123456"),
             );
             if (result.isSuccess) {
