@@ -18,12 +18,18 @@ class CreateTransaction
 
   @override
   Future<Result<void>> execute(CreateTransactionParams params) async {
+    final int transactionTime = DateTime.now().millisecondsSinceEpoch;
     final movieDetailResult = await _transactionRepository.createTransaction(
-      transaction: params.transaction,
+      transaction: params.transaction.copyWith(
+        transactionTime: transactionTime,
+        id:
+            params.transaction.id ??
+            "flx-$transactionTime-${params.transaction.uid}",
+      ),
     );
 
     return switch (movieDetailResult) {
-      Success(val: final _) => Result.ok(null),
+      Success(val: _) => Result.ok(null),
       Failure(:final err) => Result.error(err),
     };
   }
