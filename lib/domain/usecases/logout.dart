@@ -2,8 +2,8 @@ import "../../data/repositories/authentication.dart";
 import "../entities/result.dart";
 import "usecase.dart";
 
-class Login implements UseCase<Result<void>, void> {
-  Login({required this.authentication});
+class Logout implements UseCase<Result<void>, void> {
+  Logout({required this.authentication});
 
   final Authentication authentication;
 
