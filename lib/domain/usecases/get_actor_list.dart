@@ -17,7 +17,7 @@ class GetActorList implements UseCase<Result<List<Actor>>, GetActorListParams> {
 
   @override
   Future<Result<List<Actor>>> execute(GetActorListParams params) async {
-    final movieDetailResult = await _movieRepository.getActors(
+    final movieDetailResult = await _movieRepository.getActorList(
       id: params.movieId,
     );
 

@@ -20,7 +20,7 @@ class TmdbMovieRepository implements MovieRepository {
   );
 
   @override
-  Future<Result<List<Actor>>> getActors({required int id}) async {
+  Future<Result<List<Actor>>> getActorList({required int id}) async {
     try {
       final response = await _dio?.get(
         "https://api.themoviedb.org/3/movie/$id/credits?language=en-US",
