@@ -12,10 +12,10 @@ class TopUpParams {
 }
 
 class TopUp implements UseCase<Result<void>, TopUpParams> {
-  final TransactionRepository _transactionRepository;
-
   TopUp({required TransactionRepository transactionRepository})
     : _transactionRepository = transactionRepository;
+
+  final TransactionRepository _transactionRepository;
 
   @override
   Future<Result<void>> execute(TopUpParams params) async {
@@ -37,8 +37,8 @@ class TopUp implements UseCase<Result<void>, TopUpParams> {
     );
 
     return switch (movieDetailResult) {
-      Success(val: _) => Result.ok(null),
-      Failure(err: _) => Result.error("Failed to top up"),
+      Success(val: _) => const Result.ok(null),
+      Failure(err: _) => const Result.error("Failed to top up"),
     };
   }
 }

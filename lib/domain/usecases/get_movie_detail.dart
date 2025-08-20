@@ -11,10 +11,10 @@ class GetMovieDetailParams {
 
 class GetMovieDetail
     implements UseCase<Result<MovieDetail>, GetMovieDetailParams> {
-  final MovieRepository _movieRepository;
-
   GetMovieDetail({required MovieRepository movieRepository})
     : _movieRepository = movieRepository;
+
+  final MovieRepository _movieRepository;
 
   @override
   Future<Result<MovieDetail>> execute(GetMovieDetailParams params) async {

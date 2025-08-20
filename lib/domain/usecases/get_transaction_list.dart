@@ -11,10 +11,10 @@ class GetTransactionListParams {
 
 class GetTransactionList
     implements UseCase<Result<List<Transaction>>, GetTransactionListParams> {
-  final TransactionRepository _transactionRepository;
-
   GetTransactionList({required TransactionRepository transactionRepository})
     : _transactionRepository = transactionRepository;
+
+  final TransactionRepository _transactionRepository;
 
   @override
   Future<Result<List<Transaction>>> execute(

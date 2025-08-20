@@ -5,14 +5,14 @@ import "../entities/user.dart";
 import "usecase.dart";
 
 class GetLoggedInUser implements UseCase<Result<User>, void> {
-  final Authentication _authentication;
-  final UserRepository _userRepository;
-
   GetLoggedInUser({
     required Authentication authentication,
     required UserRepository userRepository,
   }) : _authentication = authentication,
        _userRepository = userRepository;
+
+  final Authentication _authentication;
+  final UserRepository _userRepository;
 
   @override
   Future<Result<User>> execute(void _) async {
@@ -28,7 +28,7 @@ class GetLoggedInUser implements UseCase<Result<User>, void> {
         Failure(:final err) => Result.error(err),
       };
     } else {
-      return Result.error("No user logged in");
+      return const Result.error("No user logged in");
     }
   }
 }

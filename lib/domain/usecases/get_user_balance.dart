@@ -9,10 +9,10 @@ class GetUserBalanceParams {
 }
 
 class GetUserBalance implements UseCase<Result<int>, GetUserBalanceParams> {
-  final UserRepository _userRepository;
-
   GetUserBalance({required UserRepository userRepository})
     : _userRepository = userRepository;
+
+  final UserRepository _userRepository;
 
   @override
   Future<Result<int>> execute(GetUserBalanceParams params) async {

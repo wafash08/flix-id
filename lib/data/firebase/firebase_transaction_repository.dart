@@ -38,16 +38,16 @@ class FirebaseTransactionRepository implements TransactionRepository {
 
             return Result.ok(Transaction.fromJson(result.data()!));
           } else {
-            return Result.error("Failed to create transaction data");
+            return const Result.error("Failed to create transaction data");
           }
         } else {
-          return Result.error("Insufficient balance");
+          return const Result.error("Insufficient balance");
         }
       } else {
-        return Result.error("Failed to create transaction data");
+        return const Result.error("Failed to create transaction data");
       }
     } catch (e) {
-      return Result.error("Failed to create transaction data");
+      return const Result.error("Failed to create transaction data");
     }
   }
 
@@ -66,10 +66,10 @@ class FirebaseTransactionRepository implements TransactionRepository {
           result.docs.map((doc) => Transaction.fromJson(doc.data())).toList(),
         );
       } else {
-        return Result.ok([]);
+        return const Result.ok([]);
       }
     } catch (e) {
-      return Result.error("Failed to get user transactions");
+      return const Result.error("Failed to get user transactions");
     }
   }
 }

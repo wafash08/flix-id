@@ -10,9 +10,7 @@ class FirebaseAuthentication implements Authentication {
   final firebase_auth.FirebaseAuth _firebaseAuth;
 
   @override
-  String? getLoggedInUserId() {
-    return _firebaseAuth.currentUser?.uid;
-  }
+  String? getLoggedInUserId() => _firebaseAuth.currentUser?.uid;
 
   @override
   Future<Result<String>> login({
@@ -34,9 +32,9 @@ class FirebaseAuthentication implements Authentication {
     await _firebaseAuth.signOut();
 
     if (_firebaseAuth.currentUser == null) {
-      return Result.ok(null);
+      return const Result.ok(null);
     } else {
-      return Result.error("Failed to log out");
+      return const Result.error("Failed to log out");
     }
   }
 

@@ -10,10 +10,10 @@ class GetActorListParams {
 }
 
 class GetActorList implements UseCase<Result<List<Actor>>, GetActorListParams> {
-  final MovieRepository _movieRepository;
-
   GetActorList({required MovieRepository movieRepository})
     : _movieRepository = movieRepository;
+
+  final MovieRepository _movieRepository;
 
   @override
   Future<Result<List<Actor>>> execute(GetActorListParams params) async {

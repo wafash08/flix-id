@@ -1,24 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_data_provider.dart';
+part of 'router_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userDataHash() => r'630517bcf5cdff1f3f6815fba34ca039190f6a75';
+String _$routerHash() => r'8a7f705237a8fd8c411819471d877d834097d6ec';
 
-/// See also [UserData].
-@ProviderFor(UserData)
-final userDataProvider = AsyncNotifierProvider<UserData, User?>.internal(
-  UserData.new,
-  name: r'userDataProvider',
+/// See also [router].
+@ProviderFor(router)
+final routerProvider = Provider<Raw<GoRouter>>.internal(
+  router,
+  name: r'routerProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$userDataHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$routerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$UserData = AsyncNotifier<User?>;
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RouterRef = ProviderRef<Raw<GoRouter>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

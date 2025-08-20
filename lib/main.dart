@@ -1,10 +1,11 @@
 import "package:firebase_core/firebase_core.dart";
 import "package:flix_id/firebase_options.dart";
-import "package:flix_id/presentation/pages/login_page.dart";
 import "package:flix_id/presentation/providers/logger_observer.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:logging/logging.dart";
+
+import "presentation/providers/router_provider.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,15 +20,17 @@ void main() async {
   );
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends ConsumerWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
-      // Scaffold(body: Center(child: Text("Hello World!"))),
+      routeInformationParser: ref.watch(routerProvider).routeInformationParser,
+      routeInformationProvider:
+          ref.watch(routerProvider).routeInformationProvider,
+      routerDelegate: ref.watch(routerProvider).routerDelegate,
     );
   }
 }

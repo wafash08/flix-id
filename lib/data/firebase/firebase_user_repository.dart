@@ -40,7 +40,7 @@ class FirebaseUserRepository implements UserRepository {
       if (result.exists) {
         return Result.ok(User.fromJson(result.data()!));
       } else {
-        return Result.error("Failed to create user data");
+        return const Result.error("Failed to create user data");
       }
     } on FirebaseException catch (e) {
       return Result.error("${e.message}");
@@ -58,7 +58,7 @@ class FirebaseUserRepository implements UserRepository {
       if (result.exists) {
         return Result.ok(User.fromJson(result.data()!));
       } else {
-        return Result.error("User not found");
+        return const Result.error("User not found");
       }
     } on FirebaseException catch (e) {
       return Result.error("${e.message}");
@@ -74,7 +74,7 @@ class FirebaseUserRepository implements UserRepository {
       if (result.exists) {
         return Result.ok(result.data()!["balance"]);
       } else {
-        return Result.error("User not found");
+        return const Result.error("User not found");
       }
     } on FirebaseException catch (e) {
       return Result.error("${e.message}");
@@ -97,10 +97,10 @@ class FirebaseUserRepository implements UserRepository {
         if (updatedUser == user) {
           return Result.ok(updatedUser);
         } else {
-          return Result.error("Failed to update user data");
+          return const Result.error("Failed to update user data");
         }
       } else {
-        return Result.error("Failed to update user data");
+        return const Result.error("Failed to update user data");
       }
     } on FirebaseException catch (e) {
       return Result.error("${e.message}");
@@ -129,13 +129,13 @@ class FirebaseUserRepository implements UserRepository {
           if (updatedUser.balance == balance) {
             return Result.ok(updatedUser);
           } else {
-            return Result.error("Failed to update user balance");
+            return const Result.error("Failed to update user balance");
           }
         } else {
-          return Result.error("Failed to retrieve updated user balance");
+          return const Result.error("Failed to retrieve updated user balance");
         }
       } else {
-        return Result.error("User not found");
+        return const Result.error("User not found");
       }
     } on FirebaseException catch (e) {
       return Result.error("${e.message}");
@@ -163,7 +163,7 @@ class FirebaseUserRepository implements UserRepository {
         return Result.error(updatedUser.error!);
       }
     } catch (e) {
-      return Result.error("Failed to upload profile picture");
+      return const Result.error("Failed to upload profile picture");
     }
   }
 }

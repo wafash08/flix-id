@@ -11,6 +11,7 @@ import "../../domain/usecases/top_up.dart";
 import "../../domain/usecases/upload_profile_picture.dart";
 import "movie/now_playing_provider.dart";
 import "movie/upcoming_provider.dart";
+import "transaction_data_provider.dart";
 import "usecases/get_logged_in_user_provider.dart";
 import "usecases/login_provider.dart";
 import "usecases/logout_provider.dart";
@@ -104,7 +105,7 @@ class UserData extends _$UserData {
 
     switch (result) {
       case Success(val: _):
-        state = AsyncData(null);
+        state = const AsyncData(null);
         break;
       case Failure(err: final message):
         state = AsyncError(FlutterError(message), StackTrace.current);
@@ -123,7 +124,9 @@ class UserData extends _$UserData {
 
       if (result.isSuccess) {
         await refreshUserData();
-        // todo: refresh transaction data
+        await ref
+            .read(transactionDataProvider.notifier)
+            .refreshTransactionData();
       }
     }
   }
@@ -142,7 +145,7 @@ class UserData extends _$UserData {
   }
 
   void _getMovies() async {
-    ref.read(nowPlayingProvider.notifier).getMovies();
-    ref.read(upcomingProvider.notifier).getMovies();
+    await ref.read(nowPlayingProvider.notifier).getMovies();
+    await ref.read(upcomingProvider.notifier).getMovies();
   }
 }

@@ -13,7 +13,7 @@ class DummyAuthentication implements Authentication {
     required String password,
   }) async {
     await Future.delayed(const Duration(seconds: 1));
-    return Result.ok("ID-1234");
+    return const Result.ok("ID-1234");
     // return Result.error("Login failed");
   }
 

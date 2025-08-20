@@ -11,10 +11,10 @@ class CreateTransactionParams {
 
 class CreateTransaction
     implements UseCase<Result<void>, CreateTransactionParams> {
-  final TransactionRepository _transactionRepository;
-
   CreateTransaction({required TransactionRepository transactionRepository})
     : _transactionRepository = transactionRepository;
+
+  final TransactionRepository _transactionRepository;
 
   @override
   Future<Result<void>> execute(CreateTransactionParams params) async {
@@ -29,7 +29,7 @@ class CreateTransaction
     );
 
     return switch (movieDetailResult) {
-      Success(val: _) => Result.ok(null),
+      Success(val: _) => const Result.ok(null),
       Failure(:final err) => Result.error(err),
     };
   }

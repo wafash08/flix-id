@@ -14,10 +14,10 @@ class UploadProfilePictureParams {
 
 class UploadProfilePicture
     implements UseCase<Result<User>, UploadProfilePictureParams> {
-  final UserRepository _userRepository;
-
   UploadProfilePicture({required UserRepository userRepository})
     : _userRepository = userRepository;
+
+  final UserRepository _userRepository;
 
   @override
   Future<Result<User>> execute(UploadProfilePictureParams params) async {
